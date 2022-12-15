@@ -1,0 +1,53 @@
+{
+    "mongodb": "",
+    "emoji": ":point_right:",
+    "hostname": "",
+    "statusNodes": true,
+    "max": 3,
+    "staff": {
+        "owner": "",
+        "admin": []
+    },
+    "nodes": {
+        "nodejs": {
+            "node": 1,
+            "filename": "index.js"
+        },
+        "python": {
+            "node": 1,
+            "filename": "index.py"
+        },
+        "txt": "Nodes UpTime",
+        "update": 21600000
+    },
+    "bot": {
+        "activity": "playing",
+        "id": "",
+        "token": "",
+        "guild": "",
+        "createAccount": "",
+        "legal": "",
+        "status": "",
+        "dir": "splashcommand",
+        "txt": "messagecommands",
+        "prefix": "!"
+    },
+    "error": {
+        "not_found": "Hmmm I can't find This Command!!"
+    },
+    "panel": {
+        "url": "",
+        "client_id": "",
+        "client_secret": ""
+    },
+    "color": {
+        "error": "#ff3333",
+        "warning": "#ff9933",
+        "info": "#99ff33",
+        "success": "#66ff33",
+        "default": "#33ff33",
+        "online": "🟢 UP",
+        "offline": "🔴 DOWN",
+        "undefined": "❓ Unknown"
+    }
+}

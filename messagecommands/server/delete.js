@@ -1,0 +1,83 @@
+const Discord = require('discord.js');
+const { bot, emoji, panel, nodes, hostname } = require('./../../config.json');
+const User = require('../../modules/Users');
+
+// panel API
+const token = require('../../connect/token');
+const ServerRemove = require('../../connect/server/delete');
+const ServerInfo = require('../../connect/server/info');
+
+function rebuild(s, id){
+    const _new = [];
+    for(let i = 0; i<s.length; i++){
+        if(s[i] !== id){
+            _new.push(s[i]);
+        }
+    }
+    return _new;
+}
+
+
+module.exports = async (client, message, args) => {
+    const _token = await token();
+    const userDB = await User.findOne({ id: message.author.id })
+    if(!userDB) return message.reply(`:x: You dont have an account created. type \`${bot.prefix}user new\` to create one`)
+    if(!args[1]) return message.reply(`:x: What server should i delete? please provide you server id *(${bot.prefix}server delete <server id>)*`)
+    if (args[1].match(/[0-9a-z]+/i) == null) return message.channel.send("lol only use english characters.");
+    
+    let msg = await message.channel.send('Let me check if this is your server, please wait . . .')
+    const output = await ServerInfo(_token.token, _token.type, args[1]);
+
+    if(!output) return msg.edit(`:x: I could not find that server`)
+    if(!userDB.servers.includes(args[1])) return msg.edit(`:x: You are not the owner of this server`)
+    msg.edit({
+            content: `Are you sure you want to delete \`${output.name}\`? once you delete your server you will never be able to recover it and all data and files will be lost forever!`,
+            components:[
+                new Discord.ActionRowBuilder()
+                .addComponents(
+                    new Discord.ButtonBuilder()
+                        .setCustomId('AcceptDelete')
+                        .setLabel('Yes')
+                        .setStyle('Success'),
+                )
+                .addComponents(
+                    new Discord.ButtonBuilder()
+                        .setCustomId('RejectDelete')
+                        .setLabel('No')
+                        .setStyle('Danger'),
+                )
+            ]
+        })
+
+        const filter = i => i.user.id === message.author.id;
+        const Collector = msg.createMessageComponentCollector({ filter, time: 300000 });
+
+        Collector.on('collect', async i => {
+            i.deferUpdate()
+            Collector.stop()
+            if(i.customId === "AcceptDelete") {
+                msg.edit({
+                    content: `Deleting Server \n Please wait . . .`,
+                })
+                const _delete = await ServerRemove(_token.token, _token.type, output.id);
+                if(!_delete){
+                    msg.edit(`:white_check_mark: Server deleted!`)
+                    if(!userDB.used) return msg.edit('WTF? how did u got a server?')
+                    userDB.used = userDB.used - 1;
+                    userDB.servers = rebuild(userDB.servers, output.id);
+                    await userDB.save();
+                } else {
+                    msg.edit(`:x: Error i can't delete this server!!`);
+                }
+            }
+            if(i.customId === "RejectDelete") {
+                msg.edit({
+                    content: `${success} Server deletion canceled`,
+                })
+            }
+        })
+
+        Collector.on('end',() => {
+            msg.edit({components:[]})
+        })
+}
