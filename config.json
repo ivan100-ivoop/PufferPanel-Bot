@@ -17,6 +17,10 @@
             "node": 1,
             "filename": "index.py"
         },
+       "paper": {
+            "node": 1,
+            "filename": "paper.jar"
+        },
         "txt": "Nodes UpTime",
         "update": 21600000
     },
