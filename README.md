@@ -2,7 +2,7 @@
 Simple Discord Bot for puffer panel
 # is comming update with staff commands
 ## How to Setup
-`` js ``{
+`js`{
     "mongodb": "<You mongo db connect url>",
     "emoji": ":point_right:",
     "hostname": "host name of panel ",
