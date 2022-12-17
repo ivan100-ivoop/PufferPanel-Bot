@@ -1,6 +1,10 @@
 # PufferPanel-Discord-Bot
 Simple Discord Bot for puffer panel
+## How to run 
+`node . or pm2 start index.js`
 ## How to Setup
+`npm i or npm install`
+
 `{
     "mongodb": "<You mongo db connect url>",
     "emoji": ":point_right:",
