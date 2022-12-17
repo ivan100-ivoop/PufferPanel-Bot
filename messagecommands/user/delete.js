@@ -15,6 +15,7 @@ module.exports = async (client, message, args) => {
     const _token = await token();
     const userDB = await User.findOne({ id: message.author.id })
     if(!userDB) return message.reply(" You dont have an account created. type `!user new` to create one")
+    if(userDB.ban) return message.reply(`:x: You account is banned.`);
     if (message.author.id === staff.owner) return message.reply(`You can't delete your owners account`)
         let msg = await message.reply({content: `You are going to delete your account with username: \`${userDB.username}\`. Once you click the yes button all your ${userDB.servers.length > 1 ? '\`'+ userDB.servers.length + '\` servers' : 'servers'} will be deleted.\n\n⚠️ *This acction is not reversable. once you deleted your account all your data will be lost forever*`, components:[
             new Discord.ActionRowBuilder()

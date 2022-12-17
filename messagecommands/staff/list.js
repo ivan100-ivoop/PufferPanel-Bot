@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
-const { bot } = require('./../../config.json');
-const User = require('../../modules/Users');
+const { bot, staff } = require('./../../config.json');
 
-// panel API
 const token = require('../../connect/token');
 const ServerInfo = require('../../connect/server/info');
+const User = require('../../modules/Users');
 
 async function ServerCount(o, s, t){
     let id = 0, id2 = 0;
@@ -20,25 +19,28 @@ async function ServerCount(o, s, t){
 }
 
 module.exports = async (client, message, args) => {
+    const user = message.author;
+    const pinuser = message.mentions.users.first();
+    if(!staff.admin.includes(user.id) && staff.owner !== user.id) return message.reply(`:x: You dont have permission to use this command!`)
     const _token = await token();
-    const userDB = await User.findOne({ id: message.author.id })
-    if(!userDB) return message.reply(`:x: You dont have an account created. type \`${bot.prefix}user new\` to create one`)
-    if(userDB.ban) return message.reply(`:x: You account is banned.`);
+    const userDB = await User.findOne({ id: ( !pinuser ? user.id : pinuser.id) })
+    if(!userDB) return message.reply(`:x: I dont find this account`)
+    if(staff.owner == userDB.id && staff.owner != user.id) return message.reply(`:x: Owner servers can't be Listed`)
     if(userDB.servers.length > 0){
         let servers = new Discord.EmbedBuilder()
-        .setTitle(`${message.author.username}'s servers`)
+        .setTitle(`${userDB.username}'s servers`)
         .setColor(Discord.Colors.Green)
         await ServerCount(servers, userDB.servers, _token);
         return message.reply({embeds:[servers] });
     } else {
-        const user = message.mentions.users.first() || message.author
         return message.channel.send({
             embeds:[
                 new Discord.EmbedBuilder()
-                .setTitle(`${user.username}'s servers`)
+                .setTitle(`${userDB.username}'s servers`)
                 .setColor(0x677bf9)
-                .setDescription(`**${user.username}** have \`${userDB.used}\`servers`)
+                .setDescription(`**${userDB.username}** have \`${userDB.used}\`servers`)
             ]
         })
     }
+
 }

@@ -10,7 +10,7 @@ const UpdateUser = require('./../../connect/user/update');
 module.exports = async (client, message, args) => {
     const userDB = await User.findOne({ id: message.author.id });
     if(!userDB) return message.reply(`:x: You dont have an account created. type \`${bot.prefix}user new\` to create one`)
-
+    if(userDB.ban) return message.reply(`:x: You account is banned.`);
     const CAPSNUM = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     var getPassword = () => {
         var password = "";

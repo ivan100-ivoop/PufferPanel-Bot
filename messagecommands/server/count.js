@@ -6,7 +6,7 @@ module.exports = async (client, message, args) => {
     const user = message.mentions.users.first() || message.author
     const userDB = await User.findOne({ id: message.author.id });
     if(!userDB) return message.reply(`:x: You dont have an account created. type \`${bot.prefix}user new\` to create one`)
-
+    if(userDB.ban) return message.reply(`:x: You account is banned.`);
     return message.channel.send({
         embeds:[
             new Discord.EmbedBuilder()

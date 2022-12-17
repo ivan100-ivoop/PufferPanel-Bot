@@ -13,6 +13,7 @@ const addUser = require('../../connect/user/create');
 module.exports = async (client, message, args) => {
     const userDB = await User.findOne({ id: message.author.id });
     if (userDB) {
+        if(userDB.ban) return message.reply(`:x: You account is banned.`);
         message.reply(":x: You already have a `panel account` linked to your discord account");
         return;
     }

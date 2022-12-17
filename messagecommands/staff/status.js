@@ -1,7 +1,7 @@
 const pretty = require('prettysize');
 const format = require('format-duration')
 const Discord = require('discord.js')
-const { bot, color, panel } = require('./../../config.json');
+const { bot, color, panel, staff } = require('./../../config.json');
 const User = require('../../modules/Users');
 
 // panel API
@@ -24,26 +24,37 @@ function getColor(server){
     return Discord.Colors.Yellow;
 }
 
+async function findUser(id){
+    const users = await User.find({});
+    for(let i = 0; i < users.length; i++){
+        if(users[i].servers.includes(id)){
+            return users[i];
+        }
+    }
+    return null;
+}
+
 module.exports = async (client, message, args) => {
     const _token = await token();
-    const userDB = await User.findOne({ id: message.author.id })
-    if(!userDB) return message.reply(`:x: You dont have an account created. type \`${bot.prefix}user new\` to create one`)
-    if(userDB.ban) return message.reply(`:x: You account is banned.`);
     if (args[1].match(/[0-9a-z]+/i) == null) return message.channel.send("lol only use english characters.");
     if (!args[1]) return  await message.channel.send({embeds:[
         new Discord.EmbedBuilder()
             .setColor(color.success)
             .addField("__**Server Status**__", `What server should i display? \nCommand Format: \`${bot.prefix}server status <server id>\``)
         ]})
-    if(!userDB.servers.includes(args[1])) return message.channel.send(`:x: You are not the owner of this server`)            
-        message.channel.send('Checking server `' + args[1] + '`\nPlease wait, it wont take more that 10 seconds').then(async (msg) => {
-                   const infoServer = await ServerInfo(_token.token, _token.type, args[1]);
-                    let srvname = infoServer.name;
+    const userDB = await findUser(args[1]);
+    if(!userDB) message.reply(`:x: I dont Found an account link to this server id but i continue to interact with server`)
+    message.channel.send('Checking server `' + args[1] + '`\nPlease wait, it wont take more that 10 seconds').then(async (msg) => {
+    const infoServer = await ServerInfo(_token.token, _token.type, args[1]);
+    if((userDB && staff.owner == userDB.id) && staff.owner != message.author.id) return message.reply(`:x: Owner servers can't be Interact`)
+    if(!infoServer) return message.reply(`:x: This server is not Exist.`);
+        let srvname = infoServer.name;
                     msg.edit({content: "<@" + message.author.id + ">", embeds:[
                             new Discord.EmbedBuilder()
                                 .setColor(getColor(infoServer))
                                 .setDescription(
                                     `**Status:** \`${infoServer.status}\`\n`
+                                    + `**Owned User:** \`${( userDB ? userDB.username : '????')}\`\n`
                                     + `**Name:** \`${srvname}\`\n`
                                     + `**Node:** \`${infoServer.node.name}\``
                                 )
@@ -133,6 +144,6 @@ module.exports = async (client, message, args) => {
                             }
                         },2000)
                 }).catch(err=> {
-                    msg.edit(`:x: | ${err}`)
+                    message.channel.send(`:x: | ${err}`)
                 })
 }
