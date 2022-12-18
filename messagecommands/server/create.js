@@ -12,11 +12,13 @@ function getList(t){
     let keys = Object.keys(nodes);
 
     for(let i=0; i<keys.length; i++){
-        if(nodes[keys[i]].name){
-            if(!test){
-                test = nodes[keys[i]].name;
+        if(nodes[keys[i]].enabled){
+            if(nodes[keys[i]].name){
+                if(!test){
+                    test = nodes[keys[i]].name;
+                }
+                response += `${nodes[keys[i]].name}\n`;
             }
-            response += `${nodes[keys[i]].name}\n`;
         }
     }
     if(response.length >= 0){
@@ -57,6 +59,7 @@ module.exports = async (client, message, args) => {
 
     let ServerData; 
     try{
+        if(!nodes[args[1]].enabled) return message.reply(`:x: I could no find any server type with the name: \`${args[1]}\`\nType \`${bot.prefix}server create list\` for more info`)
         if(nodes[args[1]].isPortForward){
             let port = require('./../../connect/eggs/port')(nodes[args[1]].allocation);
             if(!port) return message.reply(`:x: ${error.allocations}`)
