@@ -20,7 +20,7 @@ function rebuild(s, id){
 function findNode(t){
     let keys = Object.keys(nodes);
     for(let i=0; i<keys.length; i++){
-        if(nodes[keys[i]].enabled){
+        if(nodes[keys[i]].enabled && nodes[keys[i]].isPortForward){
             const node = require(`./../../connect/eggs/${keys[i]?.toLowerCase()}.js`)('test', 'test', 0);
             if(node.type === t){
                return nodes[keys[i]];
