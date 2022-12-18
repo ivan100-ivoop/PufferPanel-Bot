@@ -1,5 +1,5 @@
 let user;
-module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMPHost" ) => {
+module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMPHost", port="25565" ) => {
     if(Array.isArray(username)){
         user = username;
     } else {
@@ -55,7 +55,7 @@ module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMP
                     "desc":"How much memory in MB to allocate to the Java Heap",
                     "display":"Memory (MB)",
                     "required":true,
-                    "value":1024
+                    "value": 1024
                 },
                 "motd":{
                     "type":"string",
@@ -69,7 +69,7 @@ module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMP
                     "desc":"What port to bind the server to",
                     "display":"Port",
                     "required":true,
-                    "value":25565
+                    "value": port
                 },
                 "version":{
                     "type":"string",
@@ -85,7 +85,7 @@ module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMP
                 "networkMode":"host",
                 "networkName": hostname,
                 "portBindings":[
-                    "0.0.0.0:25569:25565/tcp"
+                    `0.0.0.0:${port}:${port}/tcp`
                 ]
             },
             "supportedEnvironments":[
@@ -93,7 +93,7 @@ module.exports = ( name, username, node = 1, file = "paper.jar", hostname = "SMP
                     "type":"standard"
                 },
                 {
-                    "image":"openjdk:16",
+                    "image":"openjdk:17",
                     "type":"docker"
                 }
             ],
