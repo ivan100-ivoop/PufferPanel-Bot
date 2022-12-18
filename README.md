@@ -58,3 +58,6 @@ Simple Discord Bot for puffer panel
         "undefined": "❓ Unknown"
     }
 }`
+# set ports to use
+`connect/eggs/ports.json in array`
+`example [25565, 25567, 25568]`
