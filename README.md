@@ -8,8 +8,8 @@ All eggs Environment is in docker not to Standard
 
 |      info         |         command         |
 | ------------------|-------------------------|
-| install pacakges  |       npm install       |
-| run               |      node index.js      |
+|    install pkg    |       npm install       |
+|        run        |      node index.js      |
 | run in background |   pm2 start index.js    |
 
 ## Importal Files
