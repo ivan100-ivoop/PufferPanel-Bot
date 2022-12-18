@@ -92,9 +92,7 @@ node verison 18.12.1
 npm version 9.1.2
 ```
 
-## Links or Help
-
-Contact me on [Discord](https://discord.gg/ACprzbeMnM)
+## Links
 
 Free [MogoDB](https://cloud.mongodb.com/)
 
