@@ -20,20 +20,23 @@ Simple Discord Bot for puffer panel
             "name": "Nodejs", //Display name on !server create
             "isPortForward": false, // is use port or not
             "node": 1, // deploy on node id
-            "filename": "index.js"  // startup file
+            "filename": "index.js",  // startup file
+            "enabled": true // enable or disable deploy or this egg
         },
         "python": {
             "name": "Nodejs", //Display name on !server create
             "isPortForward": false, // is use port or not
             "node": 1, // deploy on node id
-            "filename": "index.py" // startup file
+            "filename": "index.py", // startup file
+            "enabled": true // enable or disable deploy or this egg
         },
         "paper": {
             "name": "Paper", //Display name on !server create
             "node": 1, // deploy on node id
             "isPortForward": true, // is use port or not
             "filename": "paper.jar",  // startup file
-            "allocation": "ports.json" // ports filename locate in connect/eggs/ports.json
+            "allocation": "ports.json", // ports filename locate in connect/eggs/ports.json
+            "enabled": false // enable or disable deploy or this egg
         },
         "txt": "Nodes UpTime", // status title
         "update": 21600000 //status check time  6h
