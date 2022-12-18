@@ -15,7 +15,7 @@ module.exports = async (client, message, args) => {
     const _token = await token();
     const userDB = await User.findOne({ id: pinuser.id })
     if(!userDB) return message.reply(`:x: I dont find this account`);
-    let msg = await message.reply({content: `You are going to delete account with username: \`${userDB.username}\`. Once you click the yes button all your ${userDB.servers.length > 1 ? '\`'+ userDB.servers.length + '\` servers' : 'servers'} will be deleted.\n\n⚠️ *This acction is not reversable. once you deleted your account all your data will be lost forever*`, components:[
+    let msg = await message.reply({content: `You are going to delete account with username: \`${userDB.username}\`. Once you click the yes button all your ${userDB.servers.length > 1 ? '\`'+ userDB.servers.length + '\` servers' : 'servers'} will be deleted.\n\n⚠️ *This acction is not reversable. once you deleted this account all data will be lost forever*`, components:[
         new Discord.ActionRowBuilder()
         .addComponents(
             new Discord.ButtonBuilder()
