@@ -104,6 +104,3 @@ Contact me on [Discord](https://discord.gg/ACprzbeMnM)
 Free [MogoDB](https://cloud.mongodb.com/)
 
 ## Screenshots
-
-![staff help](images/image (1).png)
-
