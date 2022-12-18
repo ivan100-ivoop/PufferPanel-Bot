@@ -12,13 +12,6 @@ All eggs Environment is in docker not to Standard
 |        run        |      node index.js      |
 | run in background |   pm2 start index.js    |
 
-## Importal Files
-
-|           path           |
-| -------------------------|
-|       config.json        |
-|  connect/eggs/ports.json |
-
 ## ports.json
 ```json
 [25565, 25567, 25568]
