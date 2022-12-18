@@ -62,7 +62,7 @@ All eggs Environment is in docker not to Standard
         "update": 21600000 //status check time  6h
     },
     "bot": {
-        "activity": "playing", // bot activity 
+        "activity": "playing", // bot activity: playing, listening, competing, empty for watching
         "id": "", // bot client_id
         "token": "", // bit token
         "guild": "", // server id in discord
