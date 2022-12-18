@@ -17,6 +17,19 @@ function rebuild(s, id){
     return _new;
 }
 
+function findNode(t){
+    let keys = Object.keys(nodes);
+    for(let i=0; i<keys.length; i++){
+        if(nodes[keys[i]].enabled){
+            const node = require(`./../../connect/eggs/${keys[i]?.toLowerCase()}.js`)('test', 'test', 0);
+            if(node.type === t){
+               return nodes[keys[i]];
+            }
+        }
+    }
+    return null;
+}
+
 
 module.exports = async (client, message, args) => {
     const _token = await token();
@@ -31,7 +44,7 @@ module.exports = async (client, message, args) => {
 
     if(!output) return msg.edit(`:x: I could not find that server`)
     if(!userDB.servers.includes(args[1])) return msg.edit(`:x: You are not the owner of this server`)
-    msg.edit({
+     msg.edit({
             content: `Are you sure you want to delete \`${output.name}\`? once you delete your server you will never be able to recover it and all data and files will be lost forever!`,
             components:[
                 new Discord.ActionRowBuilder()
@@ -60,8 +73,16 @@ module.exports = async (client, message, args) => {
                 msg.edit({
                     content: `Deleting Server \n Please wait . . .`,
                 })
+                let port = output.port || null;
+                let type = output.type || null;
                 const _delete = await ServerRemove(_token.token, _token.type, output.id);
                 if(!_delete){
+                    if(port && type){
+                        let n = findNode(type);
+                        if(n){
+                            require('./../../connect/eggs/port')(n.allocation, port);
+                        }
+                    }
                     msg.edit(`:white_check_mark: Server deleted!`)
                     if(!userDB.used) return msg.edit('WTF? how did u got a server?')
                     userDB.used = userDB.used - 1;
