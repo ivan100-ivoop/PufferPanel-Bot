@@ -2,6 +2,9 @@
 Simple Discord Bot for puffer panel
 ## How to run 
 `node . or pm2 start index.js`
+## For Help
+[Discord](https://discord.gg/ACprzbeMnM)
+[Mail](mailto://admin@smphost.cf)
 ## How to Setup
 `npm i or npm install`
 
