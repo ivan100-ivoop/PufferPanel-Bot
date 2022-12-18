@@ -102,3 +102,8 @@ Contact me on [Discord](https://discord.gg/ACprzbeMnM)
 
 ## Links
 Free [MogoDB](https://cloud.mongodb.com/)
+
+## Screenshots
+
+![staff help](images/image (1).png)
+
