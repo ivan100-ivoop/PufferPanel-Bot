@@ -87,7 +87,10 @@ All eggs Environment is in docker not to Standard
     }
 }
 ```
-
+```bash
+node verison 18.12.1
+npm version 9.1.2
+```
 
 ## Links or Help
 
