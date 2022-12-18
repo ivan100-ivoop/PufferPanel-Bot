@@ -13,6 +13,9 @@ All eggs Environment is in docker not to Standard
 | run in background |   pm2 start index.js    |
 
 ## ports.json
+
+if isPortForward is enable it is auto get port or on delete server is auto insert back port to ports.json
+
 ```json
 [25565, 25567, 25568]
 ```
