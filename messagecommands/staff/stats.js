@@ -19,7 +19,7 @@ module.exports = async (client, message, args) => {
             let servers = new Discord.EmbedBuilder()
             .setTitle(`Servers live status`)
             .setColor(Discord.Colors.Green)
-            .addFields({ name: 'Server Name:', value: `\`\`\`\n${s.map(x => `${x.name} - ${x.status}`).join('\n')  || 'no Servers'}\`\`\``, inline: true })
+            .addFields({ name: 'All Servers:', value: `\`\`\`\n${s.map(x => `${x.name} - ${x.status}`).join('\n')  || 'no Servers'}\`\`\``, inline: true })
             return msg.edit({content: '', embeds:[servers] })
         } else {
             return msg.edit({
