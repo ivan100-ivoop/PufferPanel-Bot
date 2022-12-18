@@ -13,20 +13,23 @@
             "name": "NodeJS",
             "node": 1,
             "isPortForward": false,
-            "filename": "index.js"
+            "filename": "index.js",
+            "enabled": true
         },
         "python": {
             "name": "Python",
             "node": 1,
             "isPortForward": false,
-            "filename": "index.py"
+            "filename": "index.py",
+            "enabled": true
         },
         "paper": {
             "name": "Paper",
             "node": 1,
             "isPortForward": true,
             "filename": "paper.jar",
-            "allocation": "ports.json"
+            "allocation": "ports.json",
+            "enabled": false
         },
         "txt": "Nodes UpTime",
         "update": 21600000
