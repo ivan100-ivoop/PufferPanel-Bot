@@ -5,7 +5,7 @@ module.exports = async (token, type, id) =>{
     if(!token) throw new Error("Error Token is returned!");
     if(!type) throw new Error("Error Authorization Type is returned!");
     if(!id) throw new Error("Error Server Id is returned!");
-    let _res = await fetch(`${panel.url}/daemon/server/${id}`, {
+    let _res = await fetch(`${panel.url}/api/servers/${id}`, {
         method: 'DELETE',
         headers: {
             Authorization: `${type} ${token}`,
