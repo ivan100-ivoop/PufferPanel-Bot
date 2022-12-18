@@ -1,13 +1,31 @@
-# PufferPanel-Discord-Bot
-Simple Discord Bot for puffer panel
-## How to run 
-`node . or pm2 start index.js`
-## For Help
-[Discord](https://discord.gg/ACprzbeMnM)
-## How to Setup
-`npm i or npm install`
 
-`{
+# PufferPanel-Bot
+
+Simple Discord Bot for puffer panel
+
+All eggs Environment is in docker not to Standard
+## Deployment
+
+|      info         |         command         |
+| ------------------|-------------------------|
+| install pacakges  |       npm install       |
+| run               |      node index.js      |
+| run in background |   pm2 start index.js    |
+
+## Importal Files
+
+|           path           |
+| -------------------------|
+|       config.json        |
+|  connect/eggs/ports.json |
+
+## ports.json
+```json
+[25565, 25567, 25568]
+```
+## config.json
+```json
+{
     "mongodb": "<You mongo db connect url>",
     "emoji": ":point_right:",
     "hostname": "host name of panel ",
@@ -74,7 +92,10 @@ Simple Discord Bot for puffer panel
         "offline": "🔴 DOWN",
         "undefined": "❓ Unknown"
     }
-}`
-# set ports to use all eggs Environment to docker not to Standard
-`connect/eggs/ports.json in array`
-`example [25565, 25567, 25568]`
+}
+```
+
+
+## Help
+
+Contact me on [Discord](https://discord.gg/ACprzbeMnM)
