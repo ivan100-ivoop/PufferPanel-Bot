@@ -17,12 +17,23 @@ Simple Discord Bot for puffer panel
     },
     "nodes": { // allow ro create server a put nodejs and python 
         "nodejs": {
+            "name": "Nodejs", //Display name on !server create
+            "isPortForward": false, // is use port or not
             "node": 1, // deploy on node id
-            "filename": "index.js"
+            "filename": "index.js"  // startup file
         },
         "python": {
-            "node": 1,
-            "filename": "index.py"
+            "name": "Nodejs", //Display name on !server create
+            "isPortForward": false, // is use port or not
+            "node": 1, // deploy on node id
+            "filename": "index.py" // startup file
+        },
+        "paper": {
+            "name": "Paper", //Display name on !server create
+            "node": 1, // deploy on node id
+            "isPortForward": true, // is use port or not
+            "filename": "paper.jar",  // startup file
+            "allocation": "ports.json" // ports filename locate in connect/eggs/ports.json
         },
         "txt": "Nodes UpTime", // status title
         "update": 21600000 //status check time  6h
@@ -40,7 +51,8 @@ Simple Discord Bot for puffer panel
         "prefix": "!" // prefix !user 
     },
     "error": {
-        "not_found": "Hmmm I can't find This Command!!"
+        "not_found": "Hmmm I can't find This Command!!",
+        "allocations": "All Allocation is in use!"
     },
     "panel": {
         "url": "", // panel url 
