@@ -87,7 +87,7 @@ module.exports = async (client, message, args) => {
             return
         }
         if(reason === 'CancelAccountDeletion'){
-            msg.edit({embeds:[
+            msg.edit({content: '', embeds:[
                 new Discord.EmbedBuilder()
                 .setTitle(':x: Account Deletion canceled')
                 .setColor(Discord.Colors.Red)
