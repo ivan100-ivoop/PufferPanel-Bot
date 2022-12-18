@@ -104,7 +104,7 @@ Proxy PufferPanel [Apache](https://docs.pufferpanel.com/en/2.x/guides/apache.htm
 
 Proxy PufferPanel [Caddy](https://docs.pufferpanel.com/en/2.x/guides/caddy.html)
 
-Docker [PufferPanel](https://docs.pufferpanel.com/en/2.x/docker.html)
+Use Docker on [PufferPanel](https://docs.pufferpanel.com/en/2.x/docker.html)
 
 ## Screenshots
 
