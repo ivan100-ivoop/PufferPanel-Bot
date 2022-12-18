@@ -27,6 +27,20 @@ async function findUser(id){
     return null;
 }
 
+function findNode(t){
+    let keys = Object.keys(nodes);
+    for(let i=0; i<keys.length; i++){
+        if(nodes[keys[i]].enabled){
+            const node = require(`./../../connect/eggs/${keys[i]?.toLowerCase()}.js`)('test', 'test', 0);
+            if(node.type === t){
+               return nodes[keys[i]];
+            }
+        }
+    }
+    return null;
+}
+
+
 module.exports = async (client, message, args) => {
     const _token = await token();
     const user = message.mentions.users.first() || message.author
@@ -67,8 +81,16 @@ module.exports = async (client, message, args) => {
                 msg.edit({
                     content: `Deleting Server \n Please wait . . .`,
                 })
+                let port = output.port || null;
+                let type = output.type || null;
                 const _delete = await ServerRemove(_token.token, _token.type, output.id);
                 if(!_delete){
+                    if(port && type){
+                        let n = findNode(type);
+                        if(n){
+                            require('./../../connect/eggs/port')(n.allocation, port);
+                        }
+                    }
                     msg.edit(`:white_check_mark: Server deleted!`)
                     if(userDB){
                         if(!userDB.used) return msg.edit('WTF? how did him got a server?')
