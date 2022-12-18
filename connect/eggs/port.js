@@ -24,7 +24,9 @@ function updatePorts(allocation, port, ports){
 
 function addPort(allocation, port){
     let ports = require(`./${allocation}`);
-    ports.push(port);
+    if(!ports.includes(port)){
+        ports.push(port);
+    }
     writeFileSync(join(__dirname, allocation), JSON.stringify(ports));
     return true;
 }
