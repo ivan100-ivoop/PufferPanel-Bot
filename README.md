@@ -104,3 +104,13 @@ Contact me on [Discord](https://discord.gg/ACprzbeMnM)
 Free [MogoDB](https://cloud.mongodb.com/)
 
 ## Screenshots
+
+![staff help](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(1).png)
+
+![help](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(3).png)
+
+![user help](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(4).png)
+
+![server help](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(5).png)
+
+![nodes status](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(2).png)
