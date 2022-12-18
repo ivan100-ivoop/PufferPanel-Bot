@@ -1,10 +1,30 @@
 const Discord = require('discord.js');
-const { bot, emoji, panel, nodes, hostname } = require('./../../config.json');
+const { bot, emoji, panel, nodes, hostname, error } = require('./../../config.json');
 const User = require('../../modules/Users');
 
 // panel API
 const token = require('../../connect/token');
 const ServerCreate = require('../../connect/server/create');
+
+function getList(t){
+    let response = "";
+    let test = null;
+    let keys = Object.keys(nodes);
+
+    for(let i=0; i<keys.length; i++){
+        if(nodes[keys[i]].name){
+            if(!test){
+                test = nodes[keys[i]].name;
+            }
+            response += `${nodes[keys[i]].name}\n`;
+        }
+    }
+    if(response.length >= 0){
+        t.addFields({ name: `${emoji} __**Discord Bots**__: `, value: `${response}`, inline: true });
+        t.setFooter({ text: `Example: ${bot.prefix}server create ${test.toLowerCase()} test` });
+    }
+    return t;
+}
 
 
 module.exports = async (client, message, args) => {
@@ -21,12 +41,10 @@ module.exports = async (client, message, args) => {
         
         const row = new Discord.ActionRowBuilder()
         .addComponents([panelButton])
-        
-        const noTypeListed = new Discord.EmbedBuilder() 
+        let  noTypeListed = new Discord.EmbedBuilder() 
         .setColor(0x36393f)
-        .setTitle('Types of servers you can create:')
-        .addFields({ name: `${emoji} __**Discord Bots**__: `, value: ` NodeJS\nPython`, inline: true })
-        .setFooter({ text: `Example: ${bot.prefix}server create nodejs testBot` })
+        .setTitle('Types of servers you can create:');
+        noTypeListed = getList(noTypeListed);
 
         message.channel.send({
             content: `> :dart: What type of server you want me to create?`,
@@ -39,7 +57,13 @@ module.exports = async (client, message, args) => {
 
     let ServerData; 
     try{
-        ServerData = require(`./../../connect/eggs/${args[1]?.toLowerCase()}.js`)( (args[2] ? args[2] : args[1]), userDB.username, nodes[args[1]].node, nodes[args[1]].filename, hostname)
+        if(nodes[args[1]].isPortForward){
+            let port = require('./../../connect/eggs/port')(nodes[args[1]].allocation);
+            if(!port) return message.reply(`:x: ${error.allocations}`)
+            ServerData = require(`./../../connect/eggs/${args[1]?.toLowerCase()}.js`)( (args[2] ? args[2] : args[1]), userDB.username, nodes[args[1]].node, nodes[args[1]].filename, hostname, port);
+        } else {
+            ServerData = require(`./../../connect/eggs/${args[1]?.toLowerCase()}.js`)( (args[2] ? args[2] : args[1]), userDB.username, nodes[args[1]].node, nodes[args[1]].filename, hostname);
+        }
     }catch(err){
         console.log(err)
         message.reply(`:x: I could no find any server type with the name: \`${args[1]}\`\nType \`${bot.prefix}server create list\` for more info`)
@@ -89,5 +113,4 @@ module.exports = async (client, message, args) => {
             ]
         })
     }
-    
 }
