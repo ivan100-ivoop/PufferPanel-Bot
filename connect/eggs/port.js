@@ -22,4 +22,17 @@ function updatePorts(allocation, port, ports){
     writeFileSync(join(__dirname, allocation), JSON.stringify(_tmp));
 }
 
-module.exports = getPort;
+function addPort(allocation, port){
+    let ports = require(`./${allocation}`);
+    ports.push(port);
+    writeFileSync(join(__dirname, allocation), JSON.stringify(ports));
+    return true;
+}
+
+module.exports = (path, port=null) => {
+    if(port){
+        return addPort(path, port);
+    } else {
+        return getPort(path);
+    }
+};
