@@ -96,6 +96,16 @@ npm version 9.1.2
 
 Free [MogoDB](https://cloud.mongodb.com/)
 
+Install [PufferPanel](https://docs.pufferpanel.com/en/2.x/installing.html)
+
+Proxy PufferPanel [Nginx](https://docs.pufferpanel.com/en/2.x/guides/nginx.html)
+
+Proxy PufferPanel [Apache](https://docs.pufferpanel.com/en/2.x/guides/apache.html)
+
+Proxy PufferPanel [Caddy](https://docs.pufferpanel.com/en/2.x/guides/caddy.html)
+
+Docker [PufferPanel](https://docs.pufferpanel.com/en/2.x/docker.html)
+
 ## Screenshots
 
 ![staff help](https://raw.githubusercontent.com/ivan100-ivoop/PufferPanel-Bot/main/images/image%20(1).png)
