@@ -67,11 +67,11 @@ module.exports = async (client, message, args) => {
 
     let ServerData; 
     try{
-        if(!nodes[args[1]].enabled) return message.reply(`:x: I could no find any server type with the name: \`${args[1]?.toLowerCase()}\`\nType \`${bot.prefix}server create list\` for more info`)
-        if(nodes[args[1]].isPortForward){
-            let port = require('./../../connect/eggs/port')(nodes[args[1]?.toLowerCase()].allocation);
+        if(!nodes[args[1].toLowerCase()].enabled) return message.reply(`:x: I could no find any server type with the name: \`${args[1].toLowerCase()}\`\nType \`${bot.prefix}server create list\` for more info`)
+        if(nodes[args[1].toLowerCase()].isPortForward){
+           let port = require('./../../connect/eggs/port')(nodes[args[1].toLowerCase()].allocation);
             if(!port) return message.reply(`:x: ${error.allocations}`)
-            ServerData = require(`./../../connect/eggs/${args[1]?.toLowerCase()}.js`)( (args[2] ? args[2] : args[1]?.toLowerCase()), userDB.username, nodes[args[1]?.toLowerCase()].node, nodes[args[1]?.toLowerCase()].filename, hostname, port);
+            ServerData = require(`./../../connect/eggs/${args[1].toLowerCase()}.js`)( (args[2] ? args[2] : args[1].toLowerCase()), userDB.username, nodes[args[1].toLowerCase()].node, nodes[args[1].toLowerCase()].filename, hostname, port);
         } else {
             ServerData = require(`./../../connect/eggs/${args[1]?.toLowerCase()}.js`)( (args[2] ? args[2] : args[1]?.toLowerCase()), userDB.username, nodes[args[1]?.toLowerCase()].node, nodes[args[1]?.toLowerCase()].filename, hostname);
         }
