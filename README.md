@@ -36,6 +36,7 @@ if isPortForward is enable it is auto get port or on delete server is auto inser
             "name": "Nodejs", //Display name on !server create
             "isPortForward": false, // is use port or not
             "node": 1, // deploy on node id
+            "category": "Discord Bot",// Category of server
             "filename": "index.js",  // startup file
             "enabled": true // enable or disable deploy or this egg
         },
@@ -43,6 +44,7 @@ if isPortForward is enable it is auto get port or on delete server is auto inser
             "name": "Nodejs", //Display name on !server create
             "isPortForward": false, // is use port or not
             "node": 1, // deploy on node id
+            "category": "Discord Bot",// Category of server
             "filename": "index.py", // startup file
             "enabled": true // enable or disable deploy or this egg
         },
@@ -50,6 +52,7 @@ if isPortForward is enable it is auto get port or on delete server is auto inser
             "name": "Paper", //Display name on !server create
             "node": 1, // deploy on node id
             "isPortForward": true, // is use port or not
+            "category": "Minecraft Server", // Category of server
             "filename": "paper.jar",  // startup file
             "allocation": "ports.json", // ports filename locate in connect/eggs/ports.json
             "enabled": false // enable or disable deploy or this egg
