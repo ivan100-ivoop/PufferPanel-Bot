@@ -3,7 +3,7 @@ const { writeFileSync } = require('fs');
 
 function getPort(allocation){
     let ports = require(`./${allocation}`);
-    if(ports.length >= 0){
+    if(ports.length > 0){
         var port = ports[Math.floor(Math.random()*ports.length)];
         updatePorts(allocation, port, ports);
         return port;
