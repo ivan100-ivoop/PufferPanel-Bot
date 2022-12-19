@@ -14,6 +14,7 @@
             "node": 1,
             "isPortForward": false,
             "filename": "index.js",
+            "category": "Discord Bot",
             "enabled": true
         },
         "python": {
@@ -21,6 +22,7 @@
             "node": 1,
             "isPortForward": false,
             "filename": "index.py",
+            "category": "Discord Bot",
             "enabled": true
         },
         "paper": {
@@ -28,6 +30,7 @@
             "node": 1,
             "isPortForward": true,
             "filename": "paper.jar",
+            "category": "Minecraft Server",
             "allocation": "ports.json",
             "enabled": false
         },
