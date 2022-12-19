@@ -7,7 +7,7 @@ const token = require('../../connect/token');
 const ServerCreate = require('../../connect/server/create');
 
 function getList(t){
-    let response = "";
+    let response = [];
     let test = null;
     let keys = Object.keys(nodes);
 
@@ -17,12 +17,20 @@ function getList(t){
                 if(!test){
                     test = nodes[keys[i]].name;
                 }
-                response += `${nodes[keys[i]].name}\n`;
+                if(response[nodes[keys[i]].category]){
+                    response[nodes[keys[i]].category] += `${nodes[keys[i]].name}\n`;
+                } else {
+                    response[nodes[keys[i]].category] = `${nodes[keys[i]].name}\n`;
+                }
             }
         }
     }
     if(response.length >= 0){
-        t.addFields({ name: `${emoji} __**Discord Bots**__: `, value: `${response}`, inline: true });
+        let key = Object.keys(response);
+        for(let i=0; i<key.length; i++){
+            const out = response[key[i]];
+            t.addFields({ name: `${emoji} __**${key[i]}**__: `, value: `${out}`, inline: true });
+        }
         t.setFooter({ text: `Example: ${bot.prefix}server create ${test.toLowerCase()} test` });
     }
     return t;
