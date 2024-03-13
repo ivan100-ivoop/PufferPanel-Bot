@@ -19,7 +19,7 @@ module.exports = async (token, type) => {
         method: 'GET',
         headers: {
             Authorization: `${type} ${token}`,
-            accept: "application/json"
+            Accept: "application/json"
         }
     });
     _res = await _res.json();

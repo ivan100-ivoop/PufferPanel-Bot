@@ -3,7 +3,6 @@ const { panel } = require('../config.json');
 
 module.exports =  async () =>{
     const params = `grant_type=client_credentials&client_id=${panel["client_id"]}&client_secret=${panel["client_secret"]}`;
-    console.log(params)
     let _res = await fetch(`${panel.url}/oauth2/token`, {
         method: 'POST',
         body: params,

@@ -3,9 +3,9 @@ const mongodb = require('./Components/mongodb');
 const { bot, statusNodes } = require('./config.json');
 
 async function init(){
-    if(await mongodb()){
+   // if(await mongodb()){
         client.login(bot.token);
-    }
+   // }
 }
 
 init();

@@ -32,7 +32,11 @@ async function statusInfo(client){
         const channel = await client.channels.cache.get(bot.status)
         let messages = await channel.messages.fetch({ limit: 10 }).then(msg => msg.filter(m => m.author.id === client.user.id).last())
         let info = await getNodes(client);
-        await messages.edit({ embeds: [info]});
+        if(!messages){
+            await channel.send({ embeds: [info]});
+        } else {
+            await messages.edit({ embeds: [info]});
+        }
         setInterval(async () => {
             info = await getNodes(client);
             await messages.edit({ embeds: [info]});
