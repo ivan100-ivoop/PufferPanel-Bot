@@ -50,7 +50,7 @@
         "prefix": "!"
     },
     "error": {
-        "not_found": "Hmmm I can't find This Command!!"
+        "not_found": "Hmmm I can't find This Command!!",
         "allocations": "All Allocation is in use!"
     },
     "panel": {
