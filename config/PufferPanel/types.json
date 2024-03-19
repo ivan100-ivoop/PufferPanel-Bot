@@ -1,12 +1,4 @@
 {
-    "nodejs": {
-        "name": "NodeJS",
-        "node": 1,
-        "isPortForward": false,
-        "filename": "index.js",
-        "category": "Discord Bot",
-        "enabled": true
-    },
     "python": {
         "name": "Python",
         "node": 1,
