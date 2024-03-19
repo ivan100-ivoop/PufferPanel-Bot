@@ -1,0 +1,16 @@
+{
+    "channel_title": "ticket-{name}",
+    "roles": ["1218681018345586820"],
+    "category_id": "1218680948200050812",
+    "url": "",
+    "timestamp": true,
+    "title": "StaminaMC Support",
+    "color": "#33ff33",
+    "message": "Hey {name}, your ticket created!\nChannel: {ticket}",
+    "thumbnail": "https://i.ibb.co/fHHjb1p/ticket.png",
+    "footer": {
+        "enabled": false,
+        "thumbnail": "",
+        "text": ""
+    }
+}

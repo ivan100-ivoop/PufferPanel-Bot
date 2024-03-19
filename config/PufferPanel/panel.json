@@ -1,0 +1,31 @@
+{
+    "normal": false,
+    "url": "",
+    "client_id": "",
+    "client_secret": "",
+    "email": "",
+    "password": "",
+    "hostname": "SMPHosting",
+    "status": {
+        "enabled": true,
+        "panel": false,
+        "nodes": true,
+        "updateTime": 30000,
+        "prevent_local": true,
+        "channel_id": "",
+        "messages": {
+            "panel": "Panel UpTime",
+            "nodes": "UpTime",
+            "online": "🟢 UP",
+            "offline": "🔴 DOWN",
+            "undefined": "❓ Unknown"
+        }
+    },
+    "settings": {
+        "createAccount": "",
+        "legal": "",
+        "welcome_message": "👋 Welcome to SMP Hosting",
+        "change_password": "New password for SMP Hosting",
+        "max_servers": 1
+    }
+}
