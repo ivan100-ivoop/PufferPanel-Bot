@@ -114,19 +114,21 @@ if isPortForward is enable it is auto get port or on delete server is auto inser
 }
 ``` 
 
-## Links
+## Useful Links
 
-Free [MogoDB](https://cloud.mongodb.com/)
+[MogoDB](https://cloud.mongodb.com/)
 
-Install [PufferPanel](https://docs.pufferpanel.com/en/2.x/installing.html)
+[Install PufferPanel](https://docs.pufferpanel.com/en/2.x/installing.html)
 
-Proxy PufferPanel [Nginx](https://docs.pufferpanel.com/en/2.x/guides/nginx.html)
+[Nginx proxy PufferPanel](https://docs.pufferpanel.com/en/2.x/guides/nginx.html)
 
-Proxy PufferPanel [Apache](https://docs.pufferpanel.com/en/2.x/guides/apache.html)
+[Apache proxy PufferPanel](https://docs.pufferpanel.com/en/2.x/guides/apache.html)
 
-Proxy PufferPanel [Caddy](https://docs.pufferpanel.com/en/2.x/guides/caddy.html)
+[Caddy proxy PufferPanel](https://docs.pufferpanel.com/en/2.x/guides/caddy.html)
 
-Use Docker on [PufferPanel](https://docs.pufferpanel.com/en/2.x/docker.html)
+[Docker on PufferPanel](https://docs.pufferpanel.com/en/2.x/docker.html)
+
+[Easy-Discord-Bot](https://github.com/ivan100-ivoop/Easy-Discord-Bot)
 
 ## Screenshots
 
