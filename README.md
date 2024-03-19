@@ -10,7 +10,7 @@ All eggs Environment is in docker not to Standard
 | ------------------|-------------------------|
 |    install pkg    |       npm install       |
 |        run        |      node index.js      |
-| run in background |   pm2 start index.js    |
+|        run        |       npm run start     |
 
 ## ports.json
 
